@@ -1,6 +1,7 @@
 ﻿using HRManagement.Data;
 using HRManagement.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRManagement.Controllers
 {
@@ -42,6 +43,41 @@ namespace HRManagement.Controllers
             }
 
             
+        }
+        
+        public async Task<IActionResult> Create()
+        {
+            ViewBag.Department = await db.Departments.ToListAsync();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Save(Employee obj)
+        {
+            try
+            {
+                ModelState.Remove("EmpId");
+                if(ModelState.IsValid)
+                {
+                    if(obj.EmpId == 0)
+                    {
+                        db.Employees.Add(obj);
+                        await db.SaveChangesAsync();
+                        ModelState.Clear();
+
+                    }
+                    
+
+                    return RedirectToAction("Index");
+                }
+                return View("Create");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return View();
         }
     }
 }

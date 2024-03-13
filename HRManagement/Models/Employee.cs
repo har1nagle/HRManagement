@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRManagement.Models;
 
@@ -19,6 +20,7 @@ public partial class Employee
 
     public int? DeptId { get; set; }
 
+    [NotMapped]
     public string? Department {  get; set; }
 
     public virtual Department? Dept { get; set; }

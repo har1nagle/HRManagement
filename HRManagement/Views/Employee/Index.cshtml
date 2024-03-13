@@ -4,9 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+    .table tr th {
+        background-color:aqua;
+    }
+</style>
 <div class="container-fluid">
     <div class="row" style="background-color:#095689;">
-        <div class="col-md-6 mt-3">
+        <div class="col-md-6 mt-3 text-light">
             <h3>Employee List</h3>
         </div>
         <div class="col-md-6 mt-3">
@@ -22,6 +27,7 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
+            <th>Sr.No.</th>
             <th>
                 @Html.DisplayNameFor(model => model.EmpName)
             </th>
@@ -45,8 +51,13 @@
         </tr>
     </thead>
     <tbody>
+        @{
+            int i = 0;
+        }
 @foreach (var item in Model) {
+                i++;
         <tr>
+            <td>@i</td>
             <td>
                 @Html.DisplayFor(modelItem => item.EmpName)
             </td>

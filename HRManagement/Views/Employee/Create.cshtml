@@ -1,0 +1,86 @@
+﻿@model HRManagement.Models.Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container-fluid">
+    <div class="row" style="background-color:#095689;">
+        <div class="col-md-6 mt-3 text-light">
+            <h3>Add Employee</h3>
+        </div>
+        <div class="col-md-6 mt-3">
+            <p class="float-end">
+                <a asp-action="Create" class="btn btn-primary">Employee List</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <img src="/Images/ankit.jpg" width="400" height="430"/>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+
+            <div class="offset-2 col-md-8">
+                <form asp-action="Save">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="EmpId" />
+                        <label asp-for="EmpName" class="control-label"></label>
+                        <input asp-for="EmpName" class="form-control" />
+                        <span asp-validation-for="EmpName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Age" class="control-label"></label>
+                        <input asp-for="Age" class="form-control" />
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Gender" class="control-label"></label>
+                        <input asp-for="Gender" class="form-control" />
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Mobile" class="control-label"></label>
+                        <input asp-for="Mobile" class="form-control" />
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Department" class="control-label"></label>
+                        <select class="form-control asp-for="DeptId">
+                            <option value="">--- Select Department ---</option>
+                            @foreach (var dep in ViewBag.Department)
+                            {
+                                <option value="@dep.DeptId">@dep.Department1</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Department" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Salary" class="control-label"></label>
+                        <input asp-for="Salary" class="form-control" />
+                        <span asp-validation-for="Salary" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group d-grid mt-3">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+   
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
