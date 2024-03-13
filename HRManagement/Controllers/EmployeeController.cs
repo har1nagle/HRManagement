@@ -66,6 +66,13 @@ namespace HRManagement.Controllers
                         ModelState.Clear();
 
                     }
+
+                    else
+                    {
+                        db.Entry(obj).State = EntityState.Modified;
+                        await db.SaveChangesAsync();
+                        ModelState.Clear();
+                    }
                     
 
                     return RedirectToAction("Index");

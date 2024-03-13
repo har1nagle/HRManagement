@@ -20,7 +20,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <img src="/Images/ankit.jpg" width="400" height="430"/>
+        <img src="/Images/Powergrid.jpg" width="550" height="430"/>
     </div>
     <div class="col-md-6">
         <div class="row">
@@ -51,8 +51,8 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Department" class="control-label"></label>
-                        <select class="form-control asp-for="DeptId">
-                            <option value="">--- Select Department ---</option>
+                        <select class="form-control" asp-for="DeptId">
+                            <option value=" ">--- Select Department ---</option>
                             @foreach (var dep in ViewBag.Department)
                             {
                                 <option value="@dep.DeptId">@dep.Department1</option>
